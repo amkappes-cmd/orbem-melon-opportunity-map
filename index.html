@@ -5,18 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
-<title>Orbem Melon Opportunity Map</title>
+<title>U.S. Melon Opportunity Map</title>
 <style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
 </head>
 <body>
-<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="Orbem Melon Opportunity Map" srcdoc="&lt;!doctype html&gt;
+<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="U.S. Melon Opportunity Map" srcdoc="&lt;!doctype html&gt;
 &lt;html lang=&quot;en&quot; data-visualize-standalone&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
 &lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
 &lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
-&lt;title&gt;Orbem Melon Opportunity Map&lt;/title&gt;
+&lt;title&gt;U.S. Melon Opportunity Map&lt;/title&gt;
 &lt;style&gt;:root {
   color-scheme: light dark;
   background-color: var(
@@ -1127,7 +1127,8 @@ html&gt;body{padding:0}&lt;/style&gt;
 
     #orbem-melon-map select {
       min-height: 36px;
-      max-width: 270px;
+      width: min(390px, 56vw);
+      max-width: 100%;
       padding: 6px 32px 6px 10px;
       border: 1px solid color-mix(in srgb, var(--orbem-charcoal) 18%, transparent);
       border-radius: 4px;
@@ -1157,8 +1158,13 @@ html&gt;body{padding:0}&lt;/style&gt;
       display: inline-block;
     }
 
-    #orbem-melon-map .orbem-dot.reported { background: var(--orbem-indigo); }
-    #orbem-melon-map .orbem-dot.modeled { background: var(--orbem-honey); }
+    #orbem-melon-map .orbem-dot.fixed { background: var(--orbem-indigo); }
+    #orbem-melon-map .orbem-dot.portable { background: var(--orbem-honey); }
+    #orbem-melon-map .orbem-dot.hybrid {
+      box-sizing: border-box;
+      background: var(--orbem-indigo);
+      border: 2px solid var(--orbem-honey);
+    }
 
     #orbem-melon-map .orbem-size-key {
       display: inline-flex;
@@ -1228,6 +1234,11 @@ html&gt;body{padding:0}&lt;/style&gt;
       stroke-width: 2.5;
       vector-effect: non-scaling-stroke;
       pointer-events: none;
+    }
+
+    #orbem-melon-map .orbem-marker.is-hybrid {
+      stroke: var(--orbem-honey);
+      stroke-width: 4;
     }
 
     #orbem-melon-map .orbem-marker.is-selected {
@@ -1306,6 +1317,14 @@ html&gt;body{padding:0}&lt;/style&gt;
       font-size: 14px;
     }
 
+    #orbem-melon-map .orbem-detail-basis {
+      display: inline-block;
+      margin-top: 5px;
+      color: color-mix(in srgb, var(--orbem-charcoal) 58%, transparent);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
     #orbem-melon-map .orbem-detail-value.metric {
       color: var(--orbem-charcoal);
       font: 500 18px &quot;IBM Plex Mono&quot;, monospace;
@@ -1328,18 +1347,18 @@ html&gt;body{padding:0}&lt;/style&gt;
 
     @media (max-width: 420px) {
       #orbem-melon-map .orbem-detail { grid-template-columns: 1fr; }
-      #orbem-melon-map select { max-width: 220px; }
+      #orbem-melon-map select { width: min(265px, 72vw); }
     }
   &lt;/style&gt;
 
   &lt;div class=&quot;orbem-heading&quot;&gt;
     &lt;div&gt;
       &lt;h2&gt;Up to $27.5M ARR across major U.S. melon accounts&lt;/h2&gt;
-      &lt;p class=&quot;orbem-subtitle&quot;&gt;HQ locations · bubble size reflects projected scanner demand&lt;/p&gt;
+      &lt;p class=&quot;orbem-subtitle&quot;&gt;HQ locations · color shows likely install path · bubble size shows total scanner demand&lt;/p&gt;
     &lt;/div&gt;
-    &lt;div class=&quot;orbem-total&quot; aria-label=&quot;Gross identified opportunity&quot;&gt;
-      &lt;strong&gt;50–55 scanners&lt;/strong&gt;
-      &lt;span&gt;$0.5M ARR per scanner&lt;/span&gt;
+    &lt;div class=&quot;orbem-total&quot; aria-label=&quot;Fixed-site and portable-gated opportunity&quot;&gt;
+      &lt;strong&gt;$11.0–12.5M fixed-site ARR&lt;/strong&gt;
+      &lt;span&gt;$14.0–15.0M portable-gated ARR&lt;/span&gt;
       &lt;a class=&quot;orbem-method-link&quot; href=&quot;#orbem-methodology&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;⚑&lt;/span&gt; Methodology&lt;/a&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -1350,8 +1369,9 @@ html&gt;body{padding:0}&lt;/style&gt;
       &lt;select id=&quot;orbem-company-select&quot; aria-label=&quot;Select a melon producer&quot;&gt;&lt;/select&gt;
     &lt;/div&gt;
     &lt;div class=&quot;orbem-legend&quot; aria-label=&quot;Map legend&quot;&gt;
-      &lt;span class=&quot;orbem-key&quot;&gt;&lt;span class=&quot;orbem-dot reported&quot;&gt;&lt;/span&gt;Reported volume basis&lt;/span&gt;
-      &lt;span class=&quot;orbem-key&quot;&gt;&lt;span class=&quot;orbem-dot modeled&quot;&gt;&lt;/span&gt;Modeled or minimum basis&lt;/span&gt;
+      &lt;span class=&quot;orbem-key&quot;&gt;&lt;span class=&quot;orbem-dot fixed&quot;&gt;&lt;/span&gt;Fixed-site now&lt;/span&gt;
+      &lt;span class=&quot;orbem-key&quot;&gt;&lt;span class=&quot;orbem-dot portable&quot;&gt;&lt;/span&gt;Portable first&lt;/span&gt;
+      &lt;span class=&quot;orbem-key&quot;&gt;&lt;span class=&quot;orbem-dot hybrid&quot;&gt;&lt;/span&gt;Hybrid&lt;/span&gt;
       &lt;span class=&quot;orbem-size-key&quot; aria-label=&quot;Bubble size represents scanner demand: 1, 5, and 9 scanners&quot;&gt;
         &lt;span&gt;Scanners&lt;/span&gt;
         &lt;svg viewBox=&quot;0 0 146 32&quot; aria-hidden=&quot;true&quot;&gt;
@@ -1369,7 +1389,7 @@ html&gt;body{padding:0}&lt;/style&gt;
   &lt;/div&gt;
 
   &lt;div class=&quot;orbem-detail&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;orbem-evidence&quot; id=&quot;orbem-methodology&quot;&gt;&lt;strong&gt;Methodology:&lt;/strong&gt; Gross account opportunity, not deduplicated across marketer and grower networks. “≥” indicates a floor where crop volume is undisclosed.&lt;/div&gt;
+  &lt;div class=&quot;orbem-evidence&quot; id=&quot;orbem-methodology&quot;&gt;&lt;strong&gt;Methodology:&lt;/strong&gt; Fixed-site ARR counts five concentrated western operations plus 2–3 Melon 1 sites. Remaining multi-location seasonal demand is portable-gated until site throughput proves otherwise. Gross opportunity is not deduplicated; “≥” indicates a floor.&lt;/div&gt;
 
   &lt;script type=&quot;module&quot;&gt;
     import * as d3 from &quot;https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm&quot;;
@@ -1377,21 +1397,21 @@ html&gt;body{padding:0}&lt;/style&gt;
     import us from &quot;https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json/+esm&quot;;
 
     const companies = [
-      {name:&quot;Dresick Farms&quot;, hq:&quot;Huron, California&quot;, lat:36.203, lon:-120.103, crops:&quot;Mini watermelon · Cantaloupe&quot;, volume:&quot;≈75M lb&quot;, scanners:&quot;2&quot;, scannersMid:2, arr:&quot;$1.0M&quot;, arrMax:1, evidence:&quot;reported&quot;},
-      {name:&quot;Martori Farms&quot;, mapLabel:&quot;Martori&quot;, labelSide:&quot;top&quot;, hq:&quot;Scottsdale, Arizona&quot;, lat:33.494, lon:-111.926, crops:&quot;Mini watermelon · Cantaloupe · Honeydew · Specialty melons&quot;, volume:&quot;≈500–540M lb&quot;, scanners:&quot;8–10&quot;, scannersMid:9, arr:&quot;$4.0–5.0M&quot;, arrMax:5, evidence:&quot;modeled&quot;, featured:1},
-      {name:&quot;Van Groningen &amp; Sons&quot;, mapLabel:&quot;Van Groningen&quot;, labelSide:&quot;top&quot;, hq:&quot;Manteca, California&quot;, lat:37.797, lon:-121.216, crops:&quot;Watermelon · Mini watermelon · Cantaloupe · Honeydew&quot;, volume:&quot;≈42.5M lb watermelon + undisclosed melons&quot;, scanners:&quot;≥4&quot;, scannersMid:4, arr:&quot;≥$2.0M&quot;, arrMax:2, evidence:&quot;modeled&quot;, featured:5},
-      {name:&quot;George Perry &amp; Sons&quot;, hq:&quot;Manteca, California&quot;, lat:37.797, lon:-121.216, crops:&quot;Watermelon · Mini watermelon&quot;, volume:&quot;Not disclosed&quot;, scanners:&quot;≥2&quot;, scannersMid:2, arr:&quot;≥$1.0M&quot;, arrMax:1, evidence:&quot;modeled&quot;},
-      {name:&quot;Del Bosque Farms&quot;, hq:&quot;Firebaugh, California&quot;, lat:36.859, lon:-120.456, crops:&quot;Watermelon · Mini watermelon · Cantaloupe · Honeydew&quot;, volume:&quot;Not disclosed&quot;, scanners:&quot;4&quot;, scannersMid:4, arr:&quot;$2.0M&quot;, arrMax:2, evidence:&quot;modeled&quot;},
-      {name:&quot;Five Crowns Marketing&quot;, mapLabel:&quot;Five Crowns&quot;, labelSide:&quot;left&quot;, hq:&quot;Brawley, California&quot;, lat:32.979, lon:-115.530, crops:&quot;Watermelon · Mini watermelon · Cantaloupe · Honeydew&quot;, volume:&quot;≈65M lb joint cantaloupe program + undisclosed crops&quot;, scanners:&quot;4&quot;, scannersMid:4, arr:&quot;$2.0M&quot;, arrMax:2, evidence:&quot;modeled&quot;, featured:4},
-      {name:&quot;Fresh-Pro&quot;, hq:&quot;Longwood, Florida&quot;, lat:28.703, lon:-81.338, crops:&quot;Watermelon · Mini watermelon&quot;, volume:&quot;200M lb&quot;, scanners:&quot;3–4&quot;, scannersMid:3.5, arr:&quot;$1.5–2.0M&quot;, arrMax:2, evidence:&quot;reported&quot;},
-      {name:&quot;Farm-Wey Produce&quot;, mapLabel:&quot;Farm-Wey&quot;, hq:&quot;Lakeland, Florida&quot;, lat:28.039, lon:-81.950, crops:&quot;Watermelon · Mini watermelon · Cantaloupe&quot;, volume:&quot;≈100M lb cantaloupe + undisclosed watermelon&quot;, scanners:&quot;≥4&quot;, scannersMid:4, arr:&quot;≥$2.0M&quot;, arrMax:2, evidence:&quot;modeled&quot;, featured:3},
-      {name:&quot;Melon 1&quot;, mapLabel:&quot;Melon 1&quot;, hq:&quot;Punta Gorda, Florida&quot;, lat:26.930, lon:-82.045, crops:&quot;Watermelon · Mini watermelon&quot;, volume:&quot;≈385–440M lb&quot;, scanners:&quot;6–8&quot;, scannersMid:7, arr:&quot;$3.0–4.0M&quot;, arrMax:4, evidence:&quot;modeled&quot;, featured:2},
-      {name:&quot;Frey Farms&quot;, hq:&quot;Keenes, Illinois&quot;, lat:38.338, lon:-88.643, crops:&quot;Watermelon · Mini watermelon · Cantaloupe&quot;, volume:&quot;Not disclosed&quot;, scanners:&quot;≥3&quot;, scannersMid:3, arr:&quot;≥$1.5M&quot;, arrMax:1.5, evidence:&quot;modeled&quot;},
-      {name:&quot;MAS Melons &amp; Grapes&quot;, hq:&quot;Rio Rico, Arizona&quot;, lat:31.471, lon:-110.976, crops:&quot;Watermelon · Mini watermelon · Cantaloupe · Honeydew&quot;, volume:&quot;&gt;3M boxes across all produce; melon split unavailable&quot;, scanners:&quot;≥4&quot;, scannersMid:4, arr:&quot;≥$2.0M&quot;, arrMax:2, evidence:&quot;modeled&quot;},
-      {name:&quot;Leger &amp; Son&quot;, hq:&quot;Cordele, Georgia&quot;, lat:31.964, lon:-83.782, crops:&quot;Watermelon&quot;, volume:&quot;≥12M lb known; total undisclosed&quot;, scanners:&quot;≥1&quot;, scannersMid:1, arr:&quot;≥$0.5M&quot;, arrMax:0.5, evidence:&quot;modeled&quot;},
-      {name:&quot;Atlantic Produce Exchange&quot;, hq:&quot;Vero Beach, Florida&quot;, lat:27.639, lon:-80.397, crops:&quot;Watermelon&quot;, volume:&quot;≈37–42M lb&quot;, scanners:&quot;1&quot;, scannersMid:1, arr:&quot;$0.5M&quot;, arrMax:0.5, evidence:&quot;modeled&quot;},
-      {name:&quot;Wiggins Watermelons&quot;, hq:&quot;Caldwell, Texas&quot;, lat:30.542, lon:-96.452, crops:&quot;Watermelon&quot;, volume:&quot;100–120M lb&quot;, scanners:&quot;2&quot;, scannersMid:2, arr:&quot;$1.0M&quot;, arrMax:1, evidence:&quot;reported&quot;},
-      {name:&quot;Global Produce Sales&quot;, hq:&quot;Lakeland, Florida&quot;, lat:28.039, lon:-81.950, crops:&quot;Watermelon&quot;, volume:&quot;80M lb&quot;, scanners:&quot;2&quot;, scannersMid:2, arr:&quot;$1.0M&quot;, arrMax:1, evidence:&quot;reported&quot;}
+      {name:&quot;Dresick Farms&quot;, hq:&quot;Huron, California&quot;, lat:36.203, lon:-120.103, crops:&quot;Mini watermelon · Cantaloupe&quot;, volume:&quot;≈75M lb&quot;, scanners:&quot;2&quot;, scannersMid:2, arr:&quot;$1.0M&quot;, arrMax:1, install:&quot;fixed&quot;, installLabel:&quot;Fixed-site now&quot;, fixedScanners:&quot;2&quot;, portableScanners:&quot;0&quot;, fixedArr:&quot;$1.0M&quot;, portableArr:&quot;$0&quot;, installBasis:&quot;Single western operating site; long season.&quot;},
+      {name:&quot;Martori Farms&quot;, mapLabel:&quot;Martori&quot;, labelSide:&quot;top&quot;, hq:&quot;Scottsdale, Arizona&quot;, lat:33.494, lon:-111.926, crops:&quot;Mini watermelon · Cantaloupe · Honeydew · Specialty melons&quot;, volume:&quot;≈500–540M lb&quot;, scanners:&quot;8–10&quot;, scannersMid:9, arr:&quot;$4.0–5.0M&quot;, arrMax:5, install:&quot;fixed&quot;, installLabel:&quot;Fixed-site now&quot;, fixedScanners:&quot;8–10&quot;, portableScanners:&quot;0&quot;, fixedArr:&quot;$4.0–5.0M&quot;, portableArr:&quot;$0&quot;, installBasis:&quot;Integrated Arizona operation; long season.&quot;, featured:1},
+      {name:&quot;Van Groningen &amp; Sons&quot;, mapLabel:&quot;Van Groningen&quot;, labelSide:&quot;top&quot;, hq:&quot;Manteca, California&quot;, lat:37.797, lon:-121.216, crops:&quot;Watermelon · Mini watermelon · Cantaloupe · Honeydew&quot;, volume:&quot;≈42.5M lb watermelon + undisclosed melons&quot;, scanners:&quot;≥4&quot;, scannersMid:4, arr:&quot;≥$2.0M&quot;, arrMax:2, install:&quot;fixed&quot;, installLabel:&quot;Fixed-site now&quot;, fixedScanners:&quot;≥4&quot;, portableScanners:&quot;0&quot;, fixedArr:&quot;≥$2.0M&quot;, portableArr:&quot;$0&quot;, installBasis:&quot;Concentrated California packing operation.&quot;, featured:5},
+      {name:&quot;George Perry &amp; Sons&quot;, hq:&quot;Manteca, California&quot;, lat:37.797, lon:-121.216, crops:&quot;Watermelon · Mini watermelon&quot;, volume:&quot;Not disclosed&quot;, scanners:&quot;≥2&quot;, scannersMid:2, arr:&quot;≥$1.0M&quot;, arrMax:1, install:&quot;fixed&quot;, installLabel:&quot;Fixed-site now&quot;, fixedScanners:&quot;≥2&quot;, portableScanners:&quot;0&quot;, fixedArr:&quot;≥$1.0M&quot;, portableArr:&quot;$0&quot;, installBasis:&quot;Single Manteca packing house; fixed-site inferred.&quot;},
+      {name:&quot;Del Bosque Farms&quot;, hq:&quot;Firebaugh, California&quot;, lat:36.859, lon:-120.456, crops:&quot;Watermelon · Mini watermelon · Cantaloupe · Honeydew&quot;, volume:&quot;Not disclosed&quot;, scanners:&quot;4&quot;, scannersMid:4, arr:&quot;$2.0M&quot;, arrMax:2, install:&quot;fixed&quot;, installLabel:&quot;Fixed-site now&quot;, fixedScanners:&quot;4&quot;, portableScanners:&quot;0&quot;, fixedArr:&quot;$2.0M&quot;, portableArr:&quot;$0&quot;, installBasis:&quot;Integrated California operation; long season.&quot;},
+      {name:&quot;Five Crowns Marketing&quot;, mapLabel:&quot;Five Crowns&quot;, labelSide:&quot;left&quot;, hq:&quot;Brawley, California&quot;, lat:32.979, lon:-115.530, crops:&quot;Watermelon · Mini watermelon · Cantaloupe · Honeydew&quot;, volume:&quot;≈65M lb joint cantaloupe program + undisclosed crops&quot;, scanners:&quot;4&quot;, scannersMid:4, arr:&quot;$2.0M&quot;, arrMax:2, install:&quot;portable&quot;, installLabel:&quot;Portable first&quot;, fixedScanners:&quot;0&quot;, portableScanners:&quot;4&quot;, fixedArr:&quot;$0&quot;, portableArr:&quot;$2.0M&quot;, installBasis:&quot;Growing regions span Northern and Southern California, Arizona and Mexico.&quot;, featured:4},
+      {name:&quot;Fresh-Pro&quot;, hq:&quot;Longwood, Florida&quot;, lat:28.703, lon:-81.338, crops:&quot;Watermelon · Mini watermelon&quot;, volume:&quot;200M lb&quot;, scanners:&quot;3–4&quot;, scannersMid:3.5, arr:&quot;$1.5–2.0M&quot;, arrMax:2, install:&quot;portable&quot;, installLabel:&quot;Portable first&quot;, fixedScanners:&quot;0&quot;, portableScanners:&quot;3–4&quot;, fixedArr:&quot;$0&quot;, portableArr:&quot;$1.5–2.0M&quot;, installBasis:&quot;Year-round partner network across multiple growing areas.&quot;},
+      {name:&quot;Farm-Wey Produce&quot;, mapLabel:&quot;Farm-Wey&quot;, hq:&quot;Lakeland, Florida&quot;, lat:28.039, lon:-81.950, crops:&quot;Watermelon · Mini watermelon · Cantaloupe&quot;, volume:&quot;≈100M lb cantaloupe + undisclosed watermelon&quot;, scanners:&quot;≥4&quot;, scannersMid:4, arr:&quot;≥$2.0M&quot;, arrMax:2, install:&quot;portable&quot;, installLabel:&quot;Portable first&quot;, fixedScanners:&quot;0&quot;, portableScanners:&quot;≥4&quot;, fixedArr:&quot;$0&quot;, portableArr:&quot;≥$2.0M&quot;, installBasis:&quot;Grower network spans Florida through Indiana.&quot;, featured:3},
+      {name:&quot;Melon 1&quot;, mapLabel:&quot;Melon 1&quot;, hq:&quot;Punta Gorda, Florida&quot;, lat:26.930, lon:-82.045, crops:&quot;Watermelon · Mini watermelon&quot;, volume:&quot;≈385–440M lb&quot;, scanners:&quot;6–8&quot;, scannersMid:7, arr:&quot;$3.0–4.0M&quot;, arrMax:4, install:&quot;hybrid&quot;, installLabel:&quot;Hybrid: partial now&quot;, fixedScanners:&quot;2–3&quot;, portableScanners:&quot;4–5&quot;, fixedArr:&quot;$1.0–1.5M&quot;, portableArr:&quot;$2.0–2.5M&quot;, installBasis:&quot;Large multi-site network; 2–3 sites likely justify fixed units.&quot;, featured:2},
+      {name:&quot;Frey Farms&quot;, hq:&quot;Keenes, Illinois&quot;, lat:38.338, lon:-88.643, crops:&quot;Watermelon · Mini watermelon · Cantaloupe&quot;, volume:&quot;Not disclosed&quot;, scanners:&quot;≥3&quot;, scannersMid:3, arr:&quot;≥$1.5M&quot;, arrMax:1.5, install:&quot;portable&quot;, installLabel:&quot;Portable first&quot;, fixedScanners:&quot;0&quot;, portableScanners:&quot;≥3&quot;, fixedArr:&quot;$0&quot;, portableArr:&quot;≥$1.5M&quot;, installBasis:&quot;Confirmed multi-location seasonal operation.&quot;},
+      {name:&quot;MAS Melons &amp; Grapes&quot;, hq:&quot;Rio Rico, Arizona&quot;, lat:31.471, lon:-110.976, crops:&quot;Watermelon · Mini watermelon · Cantaloupe · Honeydew&quot;, volume:&quot;&gt;3M boxes across all produce; melon split unavailable&quot;, scanners:&quot;≥4&quot;, scannersMid:4, arr:&quot;≥$2.0M&quot;, arrMax:2, install:&quot;portable&quot;, installLabel:&quot;Portable first&quot;, fixedScanners:&quot;0&quot;, portableScanners:&quot;≥4&quot;, fixedArr:&quot;$0&quot;, portableArr:&quot;≥$2.0M&quot;, installBasis:&quot;Partner farms operate across more than ten Mexican growing locations.&quot;},
+      {name:&quot;Leger &amp; Son&quot;, hq:&quot;Cordele, Georgia&quot;, lat:31.964, lon:-83.782, crops:&quot;Watermelon&quot;, volume:&quot;≥12M lb known; total undisclosed&quot;, scanners:&quot;≥1&quot;, scannersMid:1, arr:&quot;≥$0.5M&quot;, arrMax:0.5, install:&quot;portable&quot;, installLabel:&quot;Portable first&quot;, fixedScanners:&quot;0&quot;, portableScanners:&quot;≥1&quot;, fixedArr:&quot;$0&quot;, portableArr:&quot;≥$0.5M&quot;, installBasis:&quot;Season progresses from Florida through Georgia, the Carolinas, Delaware and Indiana.&quot;},
+      {name:&quot;Atlantic Produce Exchange&quot;, hq:&quot;Vero Beach, Florida&quot;, lat:27.639, lon:-80.397, crops:&quot;Watermelon&quot;, volume:&quot;≈37–42M lb&quot;, scanners:&quot;1&quot;, scannersMid:1, arr:&quot;$0.5M&quot;, arrMax:0.5, install:&quot;portable&quot;, installLabel:&quot;Portable first&quot;, fixedScanners:&quot;0&quot;, portableScanners:&quot;1&quot;, fixedArr:&quot;$0&quot;, portableArr:&quot;$0.5M&quot;, installBasis:&quot;Farms span Florida, Georgia, Missouri and Delaware from April to September.&quot;},
+      {name:&quot;Wiggins Watermelons&quot;, hq:&quot;Caldwell, Texas&quot;, lat:30.542, lon:-96.452, crops:&quot;Watermelon&quot;, volume:&quot;100–120M lb&quot;, scanners:&quot;2&quot;, scannersMid:2, arr:&quot;$1.0M&quot;, arrMax:1, install:&quot;portable&quot;, installLabel:&quot;Portable first&quot;, fixedScanners:&quot;0&quot;, portableScanners:&quot;2&quot;, fixedArr:&quot;$0&quot;, portableArr:&quot;$1.0M&quot;, installBasis:&quot;Three to four Texas sites with short seasonal windows.&quot;},
+      {name:&quot;Global Produce Sales&quot;, hq:&quot;Lakeland, Florida&quot;, lat:28.039, lon:-81.950, crops:&quot;Watermelon&quot;, volume:&quot;80M lb&quot;, scanners:&quot;2&quot;, scannersMid:2, arr:&quot;$1.0M&quot;, arrMax:1, install:&quot;portable&quot;, installLabel:&quot;Portable first&quot;, fixedScanners:&quot;0&quot;, portableScanners:&quot;2&quot;, fixedArr:&quot;$0&quot;, portableArr:&quot;$1.0M&quot;, installBasis:&quot;Three operating entities across South Florida, central Florida and Georgia.&quot;}
     ];
 
     const root = document.getElementById(&quot;orbem-melon-map&quot;);
@@ -1412,7 +1432,7 @@ html&gt;body{padding:0}&lt;/style&gt;
     companies.slice().sort(opportunityOrder).forEach(d =&gt; {
       const option = document.createElement(&quot;option&quot;);
       option.value = d.name;
-      option.textContent = `${d.name} — ${d.arr} ARR`;
+      option.textContent = `${d.name} — ${d.arr} · ${d.installLabel}`;
       select.appendChild(option);
     });
 
@@ -1421,16 +1441,16 @@ html&gt;body{padding:0}&lt;/style&gt;
 
     function detailMarkup(d) {
       return `
-        &lt;div&gt;&lt;div class=&quot;orbem-detail-label&quot;&gt;Company / HQ&lt;/div&gt;&lt;div class=&quot;orbem-detail-value&quot;&gt;&lt;strong&gt;${d.name}&lt;/strong&gt;&lt;br&gt;${d.hq}&lt;/div&gt;&lt;/div&gt;
+        &lt;div&gt;&lt;div class=&quot;orbem-detail-label&quot;&gt;Company / install path&lt;/div&gt;&lt;div class=&quot;orbem-detail-value&quot;&gt;&lt;strong&gt;${d.name}&lt;/strong&gt;&lt;br&gt;${d.installLabel}&lt;br&gt;${d.hq}&lt;br&gt;&lt;span class=&quot;orbem-detail-basis&quot;&gt;${d.installBasis}&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
         &lt;div&gt;&lt;div class=&quot;orbem-detail-label&quot;&gt;Crops and volume&lt;/div&gt;&lt;div class=&quot;orbem-detail-value&quot;&gt;${d.crops}&lt;br&gt;${d.volume} annually&lt;/div&gt;&lt;/div&gt;
-        &lt;div&gt;&lt;div class=&quot;orbem-detail-label&quot;&gt;Scanners&lt;/div&gt;&lt;div class=&quot;orbem-detail-value metric&quot;&gt;${d.scanners}&lt;/div&gt;&lt;/div&gt;
-        &lt;div&gt;&lt;div class=&quot;orbem-detail-label&quot;&gt;ARR potential&lt;/div&gt;&lt;div class=&quot;orbem-detail-value metric&quot;&gt;${d.arr}&lt;/div&gt;&lt;/div&gt;`;
+        &lt;div&gt;&lt;div class=&quot;orbem-detail-label&quot;&gt;Fixed / portable&lt;/div&gt;&lt;div class=&quot;orbem-detail-value metric&quot;&gt;${d.fixedScanners} / ${d.portableScanners}&lt;/div&gt;&lt;/div&gt;
+        &lt;div&gt;&lt;div class=&quot;orbem-detail-label&quot;&gt;ARR now / gated&lt;/div&gt;&lt;div class=&quot;orbem-detail-value metric&quot;&gt;${d.fixedArr} / ${d.portableArr}&lt;/div&gt;&lt;/div&gt;`;
     }
 
     function tooltipMarkup(d) {
       return `
         &lt;div class=&quot;orbem-tooltip-name&quot;&gt;${d.name}&lt;/div&gt;
-        &lt;div class=&quot;orbem-tooltip-summary&quot;&gt;&lt;strong&gt;${d.arr} ARR&lt;/strong&gt;&lt;span&gt;${d.evidence === &quot;reported&quot; ? &quot;Reported&quot; : &quot;Modeled&quot;}&lt;/span&gt;&lt;/div&gt;`;
+        &lt;div class=&quot;orbem-tooltip-summary&quot;&gt;&lt;strong&gt;${d.arr} total ARR&lt;/strong&gt;&lt;span&gt;${d.installLabel}&lt;/span&gt;&lt;/div&gt;`;
     }
 
     function updateDetail(d) {
@@ -1468,7 +1488,7 @@ html&gt;body{padding:0}&lt;/style&gt;
       svg.selectAll(&quot;*&quot;).remove();
 
       svg.append(&quot;title&quot;).attr(&quot;id&quot;, &quot;orbem-map-title&quot;).text(&quot;U.S. melon producers and Orbem scanner opportunity&quot;);
-      svg.append(&quot;desc&quot;).attr(&quot;id&quot;, &quot;orbem-map-desc&quot;).text(&quot;Map of fifteen melon producer headquarters. Bubble size represents estimated scanner demand. Hover or select a company to inspect crops, annual volume, scanners and ARR potential.&quot;);
+      svg.append(&quot;desc&quot;).attr(&quot;id&quot;, &quot;orbem-map-desc&quot;).text(&quot;Map of fifteen melon producer headquarters. Color indicates fixed-site, portable-first or hybrid installation path. Bubble size represents total estimated scanner demand.&quot;);
 
       const states = feature(us, us.objects.states);
       const excludedStates = new Set([&quot;02&quot;, &quot;15&quot;]);
@@ -1533,9 +1553,9 @@ html&gt;body{padding:0}&lt;/style&gt;
         .attr(&quot;transform&quot;, d =&gt; `translate(${d.x},${d.y})`);
 
       groups.append(&quot;circle&quot;)
-        .attr(&quot;class&quot;, &quot;orbem-marker&quot;)
+        .attr(&quot;class&quot;, d =&gt; `orbem-marker${d.install === &quot;hybrid&quot; ? &quot; is-hybrid&quot; : &quot;&quot;}`)
         .attr(&quot;r&quot;, d =&gt; radius(d.scannersMid))
-        .attr(&quot;fill&quot;, d =&gt; d.evidence === &quot;reported&quot; ? colors.indigo : colors.honey)
+        .attr(&quot;fill&quot;, d =&gt; d.install === &quot;portable&quot; ? colors.honey : colors.indigo)
         .classed(&quot;is-selected&quot;, d =&gt; d.name === selected.name);
 
       groups.append(&quot;circle&quot;)
